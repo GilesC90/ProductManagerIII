@@ -17,7 +17,12 @@ const ProductForm = (props) => {
             price,
             description
         })
-        .then(res => console.log("Response: ", res))
+        .then(res => {
+            console.log("Response: ", res)
+            let tempCounter = props.counter + 1;
+            props.setCounter(tempCounter)
+            history.push("/api/products")
+        })
         .catch(err => console.log("Error: ", err))
     }
 

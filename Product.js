@@ -12,6 +12,8 @@ const Product = (props) => {
 
     let history = useHistory()
 
+    // const { removeFromDom } = props;
+
     useEffect(() => {
         axios.get("http://localhost:8000/api/products/" + id )
             .then(res => {
@@ -25,7 +27,11 @@ const Product = (props) => {
         axios.delete("http://localhost:8000/api/products/delete/" + id)
         .then(res => {
             console.log(res.data)
+            let tempCounter = props.counter + 1;
+            props.setCounter(tempCounter)
+            // removeFromDom(id)
             history.push('/api/products')
+            
         })
         .catch(err => console.log(err))
     }
